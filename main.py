@@ -31,6 +31,9 @@ def validate(text: str) -> str:
 
 def main() -> int:
     text = validate(USERNAME)
+    parent = os.path.dirname(OUTPUT_PATH)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(text)
     print(f"wrote {len(text)} chars to {OUTPUT_PATH}: {text!r}")
